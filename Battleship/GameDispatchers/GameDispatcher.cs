@@ -10,15 +10,21 @@ namespace Battleship.GameDispatchers
         private IPlayerDispatcher _playerDispatcher;
         private IGridDispatcher _gridDispatcher;
 
-        private readonly short _destroyerNumber;
-        private readonly short _battleshipNumber;
+        private readonly short _destroyersNumber;
+        private readonly short _battleshipsNumber;
         private readonly short _gridSize;
 
-        public GameDispatcher(short destroyerNumber, short battleshipNumber, short gridSize)
+        /// <summary>
+        /// Battleship game dispatcher
+        /// </summary>
+        /// <param name="destroyersNumber">Number of destroyers</param>
+        /// <param name="battleshipsNumber">Number of battleships</param>
+        /// <param name="gridSize">Size of game grid</param>
+        public GameDispatcher(short destroyersNumber, short battleshipsNumber, short gridSize)
         {
             _gridSize = gridSize;
-            _destroyerNumber = destroyerNumber;
-            _battleshipNumber = battleshipNumber;
+            _destroyersNumber = destroyersNumber;
+            _battleshipsNumber = battleshipsNumber;
 
             _playerGrid = new GameGrid(_gridSize);
             _computerGrid = new GameGrid(_gridSize);
@@ -29,7 +35,7 @@ namespace Battleship.GameDispatchers
 
         public void Play()
         {
-            _gridDispatcher.InitializePlayerAndComputerGrid(_playerGrid, _computerGrid, _destroyerNumber, _battleshipNumber);
+            _gridDispatcher.InitializePlayerAndComputerGrid(_playerGrid, _computerGrid, _destroyersNumber, _battleshipsNumber);
 
             PlacePlayerShips();
 
@@ -74,7 +80,7 @@ namespace Battleship.GameDispatchers
 
         private void PlacePlayerShips()
         {
-            for (int i = 0; i < _destroyerNumber; i++)
+            for (int i = 0; i < _destroyersNumber; i++)
             {
                 GetPlayerCurrentGrid().DisplayGrid();
                 Console.WriteLine($"Place destroyer {i + 1} enter cordinates and direction U/D/L/R");
@@ -86,7 +92,7 @@ namespace Battleship.GameDispatchers
 
             }
 
-            for (int i = 0; i < _battleshipNumber; i++)
+            for (int i = 0; i < _battleshipsNumber; i++)
             {
                 GetPlayerCurrentGrid().DisplayGrid();
                 Console.WriteLine($"Place battleship {i + 1} enter cordinates and direction U/D/L/R");

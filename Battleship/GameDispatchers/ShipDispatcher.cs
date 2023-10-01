@@ -7,7 +7,13 @@ namespace Battleship.GameDispatchers
 {
     internal interface IShipDispatcher
     {
-        public bool PlaceHumanPlayerShip(IGameGrid gameGrid, ShipSize shipSize);
+        /// <summary>
+        /// Place ships on player grid
+        /// </summary>
+        /// <param name="playerGrid">Player grid</param>
+        /// <param name="shipSize">Ship size</param>
+        /// <returns>True of possible to place</returns>
+        public bool PlaceHumanPlayerShip(IGameGrid playerGrid, ShipSize shipSize);
     }
 
     internal class ShipDispatcher : IShipDispatcher

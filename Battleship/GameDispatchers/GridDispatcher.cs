@@ -4,7 +4,14 @@ namespace Battleship.GameDispatchers
 {
     internal interface IGridDispatcher
     {
-        void InitializePlayerAndComputerGrid(IGameGrid playerGrid, IGameGrid computerGrid, short destroyterNumber, short battleshipNumber);
+        /// <summary>
+        /// Initialize empty player grid and computer grid with random ships
+        /// </summary>
+        /// <param name="playerGrid">Player grid</param>
+        /// <param name="computerGrid">Computer grid</param>
+        /// <param name="destroytersNumber">Destroyters number</param>
+        /// <param name="battleshipsNumber">Battleships number</param>
+        void InitializePlayerAndComputerGrid(IGameGrid playerGrid, IGameGrid computerGrid, short destroytersNumber, short battleshipsNumber);
     }
 
     internal class GridDispatcher : IGridDispatcher
@@ -16,13 +23,13 @@ namespace Battleship.GameDispatchers
             _randomShipGenerator = new RandomShipGenerator();
         }
 
-        public void InitializePlayerAndComputerGrid(IGameGrid playerGrid, IGameGrid computerGrid, short destroyterNumber, short battleshipNumber)
+        public void InitializePlayerAndComputerGrid(IGameGrid playerGrid, IGameGrid computerGrid, short destroytersNumber, short battleshipsNumber)
         {
             computerGrid.InitializeEmpty();
             playerGrid.InitializeEmpty();
 
             var placed = false;
-            for (int i = 0; i < battleshipNumber; i++)
+            for (int i = 0; i < battleshipsNumber; i++)
             {
                 while (!placed)
                 {
@@ -32,7 +39,7 @@ namespace Battleship.GameDispatchers
                 placed = false;
             }
 
-            for (int i = 0; i < destroyterNumber; i++)
+            for (int i = 0; i < destroytersNumber; i++)
             {
                 while (!placed)
                 {

@@ -8,6 +8,12 @@ namespace Battleship.GameDispatchers
 {
     internal interface IPlayerDispatcher
     {
+        /// <summary>
+        /// Hit computer grid and make computer to hit player grid
+        /// </summary>
+        /// <param name="playerGrid">Player grid</param>
+        /// <param name="computerGrid">Computer grid</param>
+        /// <returns>True if hit is possible</returns>
         public bool HitComputerGridAndMakeComputerMove(IGameGrid playerGrid, IGameGrid computerGrid);
     }
 
